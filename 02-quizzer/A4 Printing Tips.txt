@@ -1,0 +1,44 @@
+Detailed Discussion:
+https://stackoverflow.com/questions/3341485/how-to-make-a-html-page-in-a4-paper-size-pages
+
+=========================================================================
+
+HTML assumes that the screen is 96 DPI, or that 1 pixel is 1/96 of an inch.
+
+On hardware with a very high resolution, it uses the concept of logical pixels, which are units that are close to 1/96 of an inch, and each of which consists of multiple device pixels. This is true for printers, but also for phones and other devices with high res screens.
+
+So, if you want a rectangle the same size an an A4 (21 × 29.7 cm), you should use 794 × 1122 pixels, or in CSS, width:794px; height:1122px. But you can also use physical units, width:21cm; height:29.7cm if you don't want to worry about these logical pixels.
+
+If you're planning on printing this, remember you should print at 300dpi, so 8.5"x11"* 300 = height: 3300px; width: 2550px.
+
+Also, I would buffer .25" for a margin as well, so just do 8" x 10.5" before converting to pixels.
+
+=========================================================================
+
+body {
+  background: rgb(204,204,204); 
+}
+page {
+  background: white;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+page[size="A4"] {  
+  width: 21cm;
+  height: 29.7cm; 
+}
+page[size="A4"][layout="portrait"] {
+  width: 29.7cm;
+  height: 21cm;  
+}
+@media print {
+  body, page {
+    margin: 0;
+    box-shadow: 0;
+  }
+}
+
+<page size="A4">A4</page>
+<page size="A4" layout="portrait">A4 portrait</page>
