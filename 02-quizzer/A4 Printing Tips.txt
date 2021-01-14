@@ -5,9 +5,13 @@ https://stackoverflow.com/questions/3341485/how-to-make-a-html-page-in-a4-paper-
 
 HTML assumes that the screen is 96 DPI, or that 1 pixel is 1/96 of an inch.
 
-On hardware with a very high resolution, it uses the concept of logical pixels, which are units that are close to 1/96 of an inch, and each of which consists of multiple device pixels. This is true for printers, but also for phones and other devices with high res screens.
+On hardware with a very high resolution, it uses the concept of logical pixels, 
+which are units that are close to 1/96 of an inch, and each of which consists 
+of multiple device pixels. 
+This is true for printers, but also for phones and other devices with high res screens.
 
-So, if you want a rectangle the same size an an A4 (21 × 29.7 cm), you should use 794 × 1122 pixels, or in CSS, width:794px; height:1122px. But you can also use physical units, width:21cm; height:29.7cm if you don't want to worry about these logical pixels.
+So, if you want a rectangle the same size an an A4 (21 × 29.7 cm), you should use 794 × 1122 pixels, or in CSS, width:794px; height:1122px. 
+But you can also use physical units, width:21cm; height:29.7cm if you don't want to worry about these logical pixels.
 
 If you're planning on printing this, remember you should print at 300dpi, so 8.5"x11"* 300 = height: 3300px; width: 2550px.
 
